@@ -72,6 +72,25 @@ function initAudio() {
     animate();
 }
 
+// Create effects
+const reverb = new Tone.Reverb({
+    decay: 100,
+    wet: 1.0
+}).toDestination();
+
+const delay = new Tone.FeedbackDelay({
+    delayTime: "14n",
+    feedback: 0.9
+});
+
+// Generate the reverb impulse response
+reverb.generate().then(() => {
+    console.log("Reverb is ready");
+    
+    // Chain the effects: synth -> delay -> reverb -> destination
+    synth.chain(delay, reverb);
+});
+
 // Add this new event listener
 startInstrumentButton.addEventListener('click', initAudio);
 
