@@ -74,13 +74,13 @@ function initAudio() {
 
 // Create effects
 const reverb = new Tone.Reverb({
-    decay: 100,
-    wet: 1.0
+    decay: 4,
+    wet: .5
 }).toDestination();
 
 const delay = new Tone.FeedbackDelay({
     delayTime: "14n",
-    feedback: 0.9
+    feedback: 0.1
 });
 
 // Generate the reverb impulse response
